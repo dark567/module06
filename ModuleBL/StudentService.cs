@@ -59,7 +59,22 @@ namespace ModuleBL
 
             var resultStudent = new List<StudentModel>();
 
+            
+
             studentsEntity = studentsEntity.Where(x => x.Payments.Sum(y => y.Value) < sum).ToList();
+
+            //return resultStudent.Where(x => x.Payments.Sum(y => y.Value) < sum)
+            //    .Select(studentsEntity => StudentModel
+            //                       {
+            //    FirstName = studEntity.FirstName,
+            //                           LastName = studEntity.LastName,
+            //                           Age = studEntity.Age,
+            //                           Payments = studEntity.Payments.Select(pay => new PaymentModel
+            //                           {
+            //                               Value = pay.Value,
+            //                               Date = pay.Date
+            //                           })
+            //                       });
 
             resultStudent.AddRange(from studEntity in studentsEntity
                                    select new StudentModel
@@ -76,7 +91,6 @@ namespace ModuleBL
             return resultStudent;
 
         }
-
 
         /// <summary>
         /// 

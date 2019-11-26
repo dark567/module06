@@ -60,9 +60,10 @@ namespace ConsoleApplication
                 {
                     Console.WriteLine($"{item.FullName} - {pay.Value}");
                 }
-                
+
+
             }
-           // Console.WriteLine(test);
+            // Console.WriteLine(test);
 
             Console.ReadLine();
         }
