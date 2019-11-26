@@ -21,13 +21,13 @@ namespace ConsoleApplication
             payments.Add(new PaymentPl { Date = DateTime.Now, Value = 15500 });
             payments.Add(new PaymentPl { Date = DateTime.Now, Value = 2000 });
             payments.Add(new PaymentPl { Date = DateTime.Now, Value = 2200 });
-            payments.Add(new PaymentPl { Date = DateTime.Now, Value = 23330 });
+          
 
             var addFirstStudent = new StudentPl()
             {
-                FirstName = "petya",
-                LastName = "1111",
-                Age = 25,
+                FirstName = "Ivan",
+                LastName = "Shmig",
+                Age = 36,
                 Payments = payments
             };
 
@@ -36,7 +36,10 @@ namespace ConsoleApplication
 
             var test = ctrl.StudentWhoPayLess(100000);
 
-            System.Console.WriteLine();
+
+            Console.WriteLine(test);
+
+            Console.ReadLine();
         }
     }
 }

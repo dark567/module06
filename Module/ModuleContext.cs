@@ -5,7 +5,12 @@ namespace ModuleDal
 {
     public class ModuleContext : DbContext
     {
-        public ModuleContext(string connectionString = @"Server=.; DataBase=Module;Initial Catalog=Task;Trusted_Connection=True;") : base(connectionString)
+        //public ModuleContext(string connectionString = @"Data Source=DARK\SQLEXPRESS;Initial Catalog=Db30;Integrated Security=True") : base(connectionString)
+        //{
+
+        //}
+
+        public ModuleContext() : base(@"Data Source=DARK\SQLEXPRESS;Initial Catalog=Module;Integrated Security=True")
         {
 
         }
