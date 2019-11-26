@@ -54,11 +54,13 @@ namespace ModuleBL
             var studentsEntity = _studentRepository.GetAll();
 
             if (studentsEntity == null)
-                throw new ArgumentException("StudentsList null");
+                throw new ArgumentException("studentsEntity null");
 
             var resultStudent = new List<StudentModel>();
 
-            studentsEntity = studentsEntity.Where(st => st.Payments.Select(pay => pay.Value).Sum() < sum).ToList();
+            studentsEntity = studentsEntity.Where(x => x.Payments.Select(pay => pay.Value).Sum() < sum).ToList(); 
+
+
 
             foreach (var studEntity in studentsEntity)
             {

@@ -14,9 +14,15 @@ namespace ModuleDal
             _context = new ModuleContext();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Student> GetAll()
         {
-            return _context.Students.ToList();
+            return _context.Students
+                .Include(x => x.Payments)
+                .ToList();
         }
 
         public Student GetById(int id)
