@@ -56,27 +56,23 @@ namespace ModuleBL
             if (studentsEntity == null)
                 throw new ArgumentException("studentsEntity null");
 
+
             var resultStudent = new List<StudentModel>();
 
-            studentsEntity = studentsEntity.Where(x => x.Payments.Select(pay => pay.Value).Sum() < sum).ToList(); 
+            studentsEntity = studentsEntity.Where(x => x.Payments.Sum(y => y.Value) < sum).ToList();
 
-
-
-            foreach (var studEntity in studentsEntity)
-            {
-                resultStudent.Add(new StudentModel
-                {
-                    FirstName = studEntity.FirstName,
-                    LastName = studEntity.LastName,
-                    Age = studEntity.Age,
-                    Payments = studEntity.Payments.Select(pay => new PaymentModel
-                    {
-                        Value = pay.Value,
-                        Date = pay.Date
-                    })
-                });
-            }
-
+            resultStudent.AddRange(from studEntity in studentsEntity
+                                   select new StudentModel
+                                   {
+                                       FirstName = studEntity.FirstName,
+                                       LastName = studEntity.LastName,
+                                       Age = studEntity.Age,
+                                       Payments = studEntity.Payments.Select(pay => new PaymentModel
+                                       {
+                                           Value = pay.Value,
+                                           Date = pay.Date
+                                       })
+                                   });
             return resultStudent;
 
         }
